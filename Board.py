@@ -21,7 +21,7 @@ class PointsAndScores:
 # 3x3 board
 class Board:
     def __init__(self):
-        self.board = [[0, 0, 0], [0, 0, 0], [0, 0 ,0]]
+        self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         self.available_points = []
 
 
@@ -32,6 +32,7 @@ class Board:
 
     # Iterate over the board and get all the points where a move can be placed
     def get_available_points(self):
+        self.available_points = []
         for x in range(0, len(self.board)):
             for y in range(0, len(self.board[x])):
                 if self.board[x][y] == 0:
@@ -46,7 +47,14 @@ class Board:
 
     # Check if Game is over
     def is_game_over(self):
-        return (self.has_o_won() or self.has_x_won() or not self.get_available_points())
+        if self.has_o_won():
+            return True
+        elif self.has_x_won():
+            return True
+        elif not self.get_available_points:
+            return True
+        
+        else: return False
 
 
     # Check if player o has won 
@@ -97,9 +105,9 @@ class Board:
         
 
         print("\n")
-    
-board = Board()
-board.display_board()
+
+
+
 
 
 
